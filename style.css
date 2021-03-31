@@ -1,0 +1,36 @@
+:root {
+    --color-mode: 'light';
+    --color-dark: #141414;
+    --color-light: #efefef;
+}
+
+[data-user-color-scheme="dark"] {
+    --color-mode: 'dark';
+    --background: var(--color-dark);
+    --text-color: var(--color-light);
+}
+
+:root:not([data-user-color-scheme="dark"]) {
+    --color-mode: 'light';
+    --background: var(--color-light);
+    --text-color: var(--color-dark); 
+}
+
+@media (prefers-color-scheme: dark) {
+    [data-user-color-scheme="light"] {
+        --color-mode: 'light';
+        --background: var(--color-light);
+        --text-color: var(--color-dark);
+    }
+    
+    :root:not([data-user-color-scheme="light"]) {
+        --color-mode: 'dark';
+        --background: var(--color-dark);
+        --text-color: var(--color-light); 
+    }
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-color);
+}
